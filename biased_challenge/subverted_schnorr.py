@@ -40,11 +40,11 @@ class SubvertedVerifier:
         self.r_t = None
         self.bd_key = backdoor_key
 
-    def challenge(self, t, commitment):
+    def challenge(self, bits, commitment):
         p, q, _ = self.protocol
 
         if self.r_t is None:
-            c = random.randint(1, pow(2, t) - 1)
+            c = random.randint(1, pow(2, bits) - 1)
         else:
             c = aes_prf(self.bd_key, self.r_t, 128 // 8, p.bit_length() // 8) # adjust to challenge size
 

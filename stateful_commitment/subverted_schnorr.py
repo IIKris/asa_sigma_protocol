@@ -58,9 +58,9 @@ class HonestVerifier:
         self.public_key = A
         self.c = None
 
-    def challenge(self, t):
+    def challenge(self, bits):
         p, _, _ = self.protocol
-        self.c = random.randint(1, pow(2, t) - 1)
+        self.c = random.randint(1, pow(2, bits) - 1)
         return self.c
     
     def validate(self, t, z):
